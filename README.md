@@ -89,7 +89,7 @@ if (!props.photoOfTheDay) return <h3>Loading...</h3>;
 
 // Display your component as normal after the data has been fetched
 return (
-  {/* your normal JSX here */}
+  {/* your normal JSX here */ }
 );
 ```
 
