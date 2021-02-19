@@ -2,9 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./App.css";
 import "./index.js"
+import styled, { keyframes } from 'styled-components'
 
+const BackgroundColor = styled.div`
+background-color: green;
+`
+const StyledImg = styled.div`
+background-color: blue;
+ img{
+   width: 10%;
+   border: 6px solid white;
+ }
+ 
 
-
+`
 
 function App() {
   const [data, setData] = useState([]);
@@ -25,12 +36,15 @@ function App() {
     //  Nasa Image Component
     function NasaImg(props) {
       return (
-        <a href={props.hdurl} target='_blank'>
-        <img 
+        <StyledImg> 
+          <a href={props.hdurl} target='_blank'>
+          <img 
           src={props.url}
           alt={props.title}
-        />
+            />
+        
         </a>
+        </StyledImg>
       )
     }
 
@@ -46,7 +60,7 @@ function App() {
     //  Nasa HD Link Component
     function NasaHD(props) {
       return (
-        <a href={props.hdurl} target='_blank'>View in HD</a>
+        <button><a href={props.hdurl} target='_blank'>View in HD</a></button>
       )
     }
 
@@ -63,21 +77,25 @@ function App() {
 
     //  Final Output
     return (
+      <BackgroundColor>
 
       <div className='App'>
         <h1>NASA's Photo of the Day</h1>
+        
         <NasaImg 
           url={data.url} 
           alt={data.title} 
           hdurl={data.hdurl} 
-        />
+          />
+          
         <h2>{data.title}</h2>
         <NasaImgInfo 
           copyright={data.copyright} 
           explanation={data.explanation} 
           hdurl={data.hdurl} 
-        />
+          />
       </div>
+      </BackgroundColor>
     )
 }
 
